@@ -14,7 +14,7 @@
 
 var fs = require('fs');
 var input = fs
-  .readFileSync('./printByInput.txt')
+  .readFileSync('./11718.txt')
   .toString()
   .split('\n');
 input.map(function(str) {
