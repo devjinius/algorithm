@@ -1,1 +1,4 @@
+# editor 설정파일
 .vscode/
+# test로 시작되는 파일
+test.*
