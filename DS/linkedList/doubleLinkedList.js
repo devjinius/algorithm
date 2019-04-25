@@ -106,6 +106,21 @@ class LinkedList {
       node = node.next;
     }
   }
+
+  search(data) {
+    let current = this.head;
+    let counter = 0;
+    while (current !== null) {
+      if (current.data === data) {
+        return counter;
+      }
+
+      current = current.next;
+      counter += 1;
+    }
+
+    return -1;
+  }
 }
 
 const linkedList = new LinkedList();
@@ -126,3 +141,4 @@ console.dir(linkedList.display());
 // console.dir(linkedList.display());
 linkedList.reverse();
 console.dir(linkedList.display());
+console.log(linkedList.search(30));
