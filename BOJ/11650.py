@@ -11,20 +11,17 @@
 # 첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.
 
 
-import functools
-
 length = int(input())
-lists = []
+xy = []
 for _ in range(length):
-    lists.append(list(map(int, input().split(" "))))
+    xy.append(input().split(" "))
 
 
-def compare(x, y):
-    if x[0] == y[0]:
-        return x[1] - y[1]
-    return x[0] - y[0]
+def compare(x):
+    return int(x[0]), int(x[1])
 
 
-sortedList = sorted(lists, key=functools.cmp_to_key(compare))
-for i in sortedList:
+xy.sort(key=compare)
+
+for i in xy:
     print(f'{i[0]} {i[1]}')
