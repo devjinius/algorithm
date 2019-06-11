@@ -16,18 +16,40 @@
 # 출력
 # 첫째 줄에 최대로 마실 수 있는 포도주의 양을 출력한다.
 
-num = int(input())
+# num = int(input())
 
+# if num != 1:
+#     a1 = int(input())
+#     a2 = int(input())
+#     dp = [0, a1, a1+a2]
+#     a = [0, a1, a2]
+
+#     for i in range(3, num+1):
+#         a.append(int(input()))
+#         dp.append(max(dp[i-1], dp[i-3] + a[i-1] + a[i], dp[i-2] + a[i]))
+
+#     print(dp[-1])
+# else:
+#     print(input())
+
+import sys
+read = sys.stdin.readline
+
+num = int(read())
 if num != 1:
-    a1 = int(input())
-    a2 = int(input())
-    dp = [0, a1, a1+a2]
-    a = [0, a1, a2]
 
-    for i in range(3, num+1):
-        a.append(int(input()))
-        dp.append(max(dp[i-1], dp[i-3] + a[i-1] + a[i], dp[i-2] + a[i]))
+    a = [0] * (num+1)
+    dp = [0] * (num+1)
 
-    print(dp[-1])
+    for i in range(num):
+        a[i+1] = int(read())
+
+    dp[1] = a[1]
+    dp[2] = a[1] + a[2]
+
+    for n in range(3, num+1):
+        dp[n] = max(dp[n-1], dp[n-3] + a[n-1] + a[n], dp[n-2] + a[n])
+
+    print(dp[num])
 else:
-    print(input())
+    print(read())
