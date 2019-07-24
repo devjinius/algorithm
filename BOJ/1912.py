@@ -19,13 +19,23 @@
 # 없음
 
 
-def solution():
-    length = int(input())
-    arr = list(map(int, input().split(" ")))
-    sum = [arr[0]]
-    for i in range(length-1):
-        sum.append(max(sum[i] + arr[i+1], arr[i+1]))
-    print(max(sum))
+# def solution():
+#     length = int(input())
+#     arr = list(map(int, input().split(" ")))
+#     sum = [arr[0]]
+#     for i in range(length-1):
+#         sum.append(max(sum[i] + arr[i+1], arr[i+1]))
+#     print(max(sum))
 
 
-solution()
+# solution()
+
+n = int(input())
+a = list(map(int, input().split(" ")))
+dp = [0] * n
+dp[0] = a[0]
+s = 0
+for i in range(1, n):
+    dp[i] = max(dp[i-1] + a[i], a[i])
+
+print(max(dp))
