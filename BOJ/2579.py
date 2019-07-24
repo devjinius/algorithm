@@ -19,15 +19,39 @@
 # 출력
 # 첫째 줄에 계단 오르기 게임에서 얻을 수 있는 총 점수의 최댓값을 출력한다.
 
-num = int(input())
+# num = int(input())
 
-a1 = int(input())
-a2 = int(input())
-dp = [0, a1, a1+a2]
-a = [0, a1, a2]
+# a1 = int(input())
+# a2 = int(input())
+# dp = [0, a1, a1+a2]
+# a = [0, a1, a2]
 
-for i in range(3, num+1):
-    a.append(int(input()))
-    dp.append(max(dp[i-3] + a[i-1], dp[i-2]) + a[i])
+# for i in range(3, num+1):
+#     a.append(int(input()))
+#     dp.append(max(dp[i-3] + a[i-1], dp[i-2]) + a[i])
 
-print(dp[-1])
+# print(dp[-1])
+
+import sys
+read = sys.stdin.readline
+
+num = int(read())
+
+if num != 1:
+
+    a = [0] * (num+1)
+    dp = [0] * (num+1)
+
+    for i in range(1, num+1):
+        a[i] = int(read())
+
+    dp[1] = a[1]
+    dp[2] = a[1] + a[2]
+
+    for i in range(3, num+1):
+        dp[i] = max(dp[i-2], dp[i-3] + a[i-1]) + a[i]
+
+    print(dp[num])
+
+else:
+    print(read())
