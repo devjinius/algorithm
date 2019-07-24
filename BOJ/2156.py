@@ -32,24 +32,46 @@
 # else:
 #     print(input())
 
+# import sys
+# read = sys.stdin.readline
+
+# num = int(read())
+# if num != 1:
+
+#     a = [0] * (num+1)
+#     dp = [0] * (num+1)
+
+#     for i in range(num):
+#         a[i+1] = int(read())
+
+#     dp[1] = a[1]
+#     dp[2] = a[1] + a[2]
+
+#     for n in range(3, num+1):
+#         dp[n] = max(dp[n-1], dp[n-3] + a[n-1] + a[n], dp[n-2] + a[n])
+
+#     print(dp[num])
+# else:
+#     print(read())
+
 import sys
 read = sys.stdin.readline
 
 num = int(read())
-if num != 1:
 
-    a = [0] * (num+1)
+if num == 1:
+    print(read())
+else:
+    arr = [0] * (num+1)
     dp = [0] * (num+1)
 
     for i in range(num):
-        a[i+1] = int(read())
+        arr[i+1] = int(read())
 
-    dp[1] = a[1]
-    dp[2] = a[1] + a[2]
+    dp[1] = arr[1]
+    dp[2] = arr[1] + arr[2]
 
-    for n in range(3, num+1):
-        dp[n] = max(dp[n-1], dp[n-3] + a[n-1] + a[n], dp[n-2] + a[n])
+    for i in range(3, num+1):
+        dp[i] = max(dp[i-2] + arr[i], dp[i-3] + arr[i-1] + arr[i], dp[i-1])
 
     print(dp[num])
-else:
-    print(read())
